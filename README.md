@@ -3,7 +3,6 @@ Photoshop script used to generate avatars for use as profile images.
 
 <p align="center">
   <img width="450" src="resources/examples/List-of-Exported-Initials.png" alt="List of exproted avatars">
-  <img width="250" height="250" src="resources/examples/Initials-SP.png" alt="Initials SP">
 </p>
 
 ## Requirements
