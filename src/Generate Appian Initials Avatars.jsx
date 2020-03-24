@@ -1,13 +1,15 @@
 // Size of the Photoshop document canvas (Width x Height)
 const CANVAS_SIZE = Array(500, 500);
 // Background Color as Hex Code
-const BACKGROUND_COLOR = "c41130";
+const BACKGROUND_COLOR = "8a8a8a";
 // Text Color as Hex Code
 const TEXT_COLOR = "ffffff";
 // Font Used to Display Initials
 const TEXT_FONT = "Open Sans Regular";
 // Size of User Initials
 const TEXT_SIZE = 60;
+// Number of Initials to Process (Max 2)
+const INITIAL_SET = 1
 
 
 function determineLayerTranslation(boundsOfLayerToTranslate) {
@@ -80,9 +82,16 @@ app.preferences.typeUnits = TypeUnits.POINTS
 app.backgroundColor = bgcolor;
 app.foreground = fcolor;
 
-// Default characters to start generation with AA
+// Characters
 var initialOne = "@";
 var initialTwo = "Z";
+
+// Loop Count
+if (INITIAL_SET == 2) {
+  var loopCount = 676
+} else {
+  var loopCount = 26
+}
 
 
 /*
@@ -105,8 +114,9 @@ if (!directoryExport.exists) {
 // Create New Document
 var doc = app.documents.add(CANVAS_SIZE[0], CANVAS_SIZE[1], 300, "temp", NewDocumentMode.RGB, DocumentFill.BACKGROUNDCOLOR);
 
-// Loop 
-for (var count = 0; count < 676; count++) {
+// Loop
+
+for (var count = 0; count < loopCount; count++) {
 
   values = nextInitialSet(initialOne, initialTwo);
   initialOne = values[0];
@@ -126,15 +136,25 @@ for (var count = 0; count < 676; count++) {
   textProperty.font = TEXT_FONT;
   textProperty.position = new Array(0,0);
   textProperty.color = fcolor;
-  textProperty.contents = initialOne + initialTwo;
+  if (INITIAL_SET == 2) {
+    textProperty.contents = initialOne + initialTwo;
+  } else {
+    textProperty.contents = initialTwo;
+  }
+
 
   // Align Layer
   var test = determineLayerTranslation(textLayer.bounds)
   textLayer.translate(test[0], test[1]);
 
   // Save
+  if (INITIAL_SET == 2) {
+    var outputFilename = initialOne + initialTwo
+  } else {
+    var outputFilename = initialTwo
+  }
   pngSaveOptions = new PNGSaveOptions();
-  doc.saveAs(new File(exportFilePath + initialOne + initialTwo), pngSaveOptions, true, Extension.LOWERCASE);
+  doc.saveAs(new File(exportFilePath + outputFilename), pngSaveOptions, true, Extension.LOWERCASE);
 
   textLayer.remove();
 }

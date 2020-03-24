@@ -21,3 +21,4 @@ The following constants can be modified to customize the outputted images:
 * TEXT_COLOR
 * TEXT_FONT
 * TEXT_SIZE
+* INITIAL_SET
