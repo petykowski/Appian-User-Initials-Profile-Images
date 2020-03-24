@@ -1,20 +1,24 @@
-# Appian User Initials Profile Images
-Photoshop Script and Action used to generate Appian user profile images.
+# Appian User Initials Avatars
+Photoshop script used to generate avatars for use as profile images.
 
-![List-of-Exported-Initials](resources/examples/List-of-Exported-Initials.png)
-![Initials-SP](resources/examples/Initials-SP.png)
+<p align="center">
+  <img width="450" src="resources/examples/List-of-Exported-Initials.png" alt="List of exproted avatars">
+  <img width="250" height="250" src="resources/examples/Initials-SP.png" alt="Initials SP">
+</p>
 
 ## Requirements
-* Adobe Photoshop 2020
-
-## Installation
-1. Launch Photoshop
-2. Navigate to `resources/actions` directory in repo
-3. Double-click on each action file (.atn)
-4. Confirm that `Appian Profile Image Initials.atn` exists in Photoshop's Actions menu
+* Adobe Photoshop 2020 (_Not tested on previous versions of Photoshop_)
 
 ## Usage
 1. Launch Photoshop
 2. From the file menu, navigate to `File > Scripts > Browse...`
-3. Navigate to the `src` directory in repo and select the `Generate Profile Images.jsx` file
+3. Navigate to the `src` directory in repo and select the `Generate Appian Initials Avatars.jsx` file
 4. Template and exported files are output to the `Appian User Images` directory at `~/Desktop`
+
+## Configuration
+The following constants can be modified to customize the outputted images:
+* CANVAS_SIZE
+* BACKGROUND_COLOR
+* TEXT_COLOR
+* TEXT_FONT
+* TEXT_SIZE
